@@ -2,3 +2,35 @@ name = "hum"
 main = "index.js"
 compatibility_date = "2026-08-12"
 
+# D1 Database
+[[d1_databases]]
+binding = "DB"
+database_name = "hum-db"
+database_id = "3aa5c635-68bf-4759-92bf-d14a55f0c252"
+
+# KV Namespace
+[[kv_namespaces]]
+binding = "KV"
+id = "1e6059f8443e4aa49e65f97d7e2c30a9"
+
+# R2 Bucket
+[[r2_buckets]]
+binding = "R2"
+bucket_name = "hum-r2"
+
+# Queue Producer
+[[queues.producers]]
+queue = "hum-queue"
+binding = "QUEUE"
+
+# Queue Consumer
+[[queues.consumers]]
+queue = "hum-queue"
+max_batch_size = 10
+max_concurrency = 1
+
+# Durable Objects
+[[durable_objects.bindings]]
+name = "COUNTER"
+class_name = "CounterDO"
+
