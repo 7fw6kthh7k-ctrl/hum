@@ -33,4 +33,7 @@ max_concurrency = 1
 [[durable_objects.bindings]]
 name = "COUNTER"
 class_name = "CounterDO"
+[[migrations]]
+tag = "v1"
+new_sqlite_classes = ["CounterDO"]
 
