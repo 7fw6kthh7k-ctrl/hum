@@ -6,6 +6,10 @@ compatibility_date = "2026-08-13"
 name = "CounterDO"
 class_name = "CounterDO"
 
+[[queues.producers]]
+queue = "hum-queue"
+binding = "QUEUE"
+
 [[migrations]]
 tag = "v1"
 new_sqlite_classes = ["CounterDO"]
