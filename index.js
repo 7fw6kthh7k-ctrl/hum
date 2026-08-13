@@ -23,6 +23,15 @@ export class CounterDO {
 
 export default {
   async fetch(request, env) {
+    const url = new URL(request.url);
+
+    if (url.pathname === "/queue") {
+      await env.QUEUE.send({ message: "Hello from hum Worker!", timestamp: Date.now() });
+      return new Response(JSON.stringify({ status: "Message sent to queue" }), {
+        headers: { "Content-Type": "application/json" },
+      });
+    }
+
     const id = env.CounterDO.idFromName("global");
     const stub = env.CounterDO.get(id);
     return stub.fetch(request);
