@@ -65,4 +65,4 @@ export default {
 
   // Queue consumer handler
   async queue(batch, env) {
-    for (const message of 
+    for (const message of {
