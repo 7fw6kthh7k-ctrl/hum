@@ -8,7 +8,8 @@ export class CounterDO {
     const count = parseInt((await this.state.storage.get("count")) || "0") + 1;
     await this.state.storage.put("count", count);
     return new Response(JSON.stringify({ count }));
-  }
+  }git checkout origin/main -- index.js
+
 }
 
 export default {
