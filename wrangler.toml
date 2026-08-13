@@ -36,5 +36,7 @@ class_name = "CounterDO"
 [[migrations]]
 tag = "v1"
 new_sqlite_classes = ["CounterDO"] 
-[[migrations]] block with new_sqlite_classes = ["CounterDO"]
+[[migrations]]
+new_sqlite_classes = ["CounterDO"]
+
 
