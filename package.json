@@ -1,5 +1,13 @@
 {
+  "name": "hum",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
   "scripts": {
-    "build": "vite build"
+    "deploy": "wrangler deploy",
+    "dev": "wrangler dev"
+  },
+  "devDependencies": {
+    "wrangler": "^4.0.0"
   }
 }
