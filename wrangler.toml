@@ -1,7 +1,11 @@
 {
+  "$schema": "node_modules/wrangler/config-schema.json",
   "name": "hum",
   "main": "src/index.js",
   "compatibility_date": "2026-08-13",
+  "observability": {
+    "enabled": true
+  },
   "durable_objects": {
     "bindings": [
       {
@@ -9,6 +13,12 @@
         "class_name": "CounterDO"
       }
     ]
+  },
+  "exports": {
+    "CounterDO": {
+      "type": "durable-object",
+      "storage": "sqlite"
+    }
   },
   "queues": {
     "producers": [
@@ -27,7 +37,7 @@
   "migrations": [
     {
       "tag": "v1",
-      "new_classes": ["CounterDO"]
+      "new_sqlite_classes": ["CounterDO"]
     }
   ]
 }
