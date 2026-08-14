@@ -13,3 +13,5 @@ binding = "QUEUE"
 [[migrations]]
 tag = "v1"
 new_sqlite_classes = ["CounterDO"]
+[assets]
+directory = "./dist"
