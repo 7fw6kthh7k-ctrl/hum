@@ -1,9 +1,10 @@
 {
   "name": "hum",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "private": true,
   "type": "module",
   "scripts": {
+    "build": "echo no build step",
     "deploy": "wrangler deploy",
     "dev": "wrangler dev"
   },
