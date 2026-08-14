@@ -5,7 +5,7 @@ export class CounterDO {
 
   async fetch(request) {
     const url = new URL(request.url);
-    let count = parseInt((await this.state.storage.get("count")) || "0");
+    let count = parseInt(await this.state.storage.get("count") || "0");
 
     if (url.pathname === "/increment") {
       count++;
@@ -16,7 +16,7 @@ export class CounterDO {
     }
 
     return new Response(JSON.stringify({ count }), {
-      headers: { "Content-Type": "application/json" },
+      headers: { "Content-Type": "application/json" }
     });
   }
 }
@@ -25,22 +25,15 @@ export default {
   async fetch(request, env) {
     const url = new URL(request.url);
 
+    // Send a message to the queue
     if (url.pathname === "/queue") {
       await env.QUEUE.send({ message: "Hello from hum Worker!", timestamp: Date.now() });
       return new Response(JSON.stringify({ status: "Message sent to queue" }), {
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json" }
       });
     }
 
+    // Route everything else to the Durable Object
     const id = env.CounterDO.idFromName("global");
     const stub = env.CounterDO.get(id);
     return stub.fetch(request);
-  },
-
-  async queue(batch, env) {
-    for (const message of batch.messages) {
-      console.log(`Processing message: ${JSON.stringify(message.body)}`);
-      message.ack();
-    }
-  },
-};
