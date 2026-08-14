@@ -33,11 +33,5 @@
         "max_batch_size": 10
       }
     ]
-  },
-  "migrations": [
-    {
-      "tag": "v1",
-      "new_sqlite_classes": ["CounterDO"]
-    }
-  ]
+  }
 }
