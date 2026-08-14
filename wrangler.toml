@@ -1,17 +1,33 @@
-name = "hum"
-main = "index.js"
-compatibility_date = "2026-08-13"
-
-[[durable_objects.bindings]]
-name = "CounterDO"
-class_name = "CounterDO"
-
-[[queues.producers]]
-queue = "hum-queue"
-binding = "QUEUE"
-
-[[migrations]]
-tag = "v1"
-new_sqlite_classes = ["CounterDO"]
-[assets]
-directory = "./dist"
+{
+  "name": "hum",
+  "main": "src/index.js",
+  "compatibility_date": "2026-08-13",
+  "durable_objects": {
+    "bindings": [
+      {
+        "name": "CounterDO",
+        "class_name": "CounterDO"
+      }
+    ]
+  },
+  "queues": {
+    "producers": [
+      {
+        "queue": "hum-queue",
+        "binding": "QUEUE"
+      }
+    ],
+    "consumers": [
+      {
+        "queue": "hum-queue",
+        "max_batch_size": 10
+      }
+    ]
+  },
+  "migrations": [
+    {
+      "tag": "v1",
+      "new_classes": ["CounterDO"]
+    }
+  ]
+}
